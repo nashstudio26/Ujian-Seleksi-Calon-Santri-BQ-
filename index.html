@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KMA Baitul Qur'an Slogohimo, Lembaga Pendidikan Islam</title>
+    <meta name="description" content="Lembaga Pendidikan Islam KMA Baitul Qur'an Slogohimo. Informasi profil, visi, program pendidikan, kegiatan ekstrakurikuler, dan ujian seleksi calon santri.">
+
+    <!-- Preconnect & Preload Logo PNG Transparan Asli -->
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+    <link rel="preconnect" href="https://drive.google.com" crossorigin>
+    <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1LALXms6q_cctYtN_nolPCAmz6bXrRikP">
+
+    <!-- Google Fonts: Fraunces & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Palet Warna Identitas Lembaga (Emerald & Gold) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            950: '#07291C',
+                            900: '#0B3E2B',
+                            800: '#12533B',
+                            700: '#186B4C',
+                            100: '#E3EFEA',
+                            50:  '#F3F8F6',
+                        },
+                        gold: {
+                            600: '#A67926',
+                            500: '#C29238',
+                            400: '#D4A853',
+                            100: '#F8F0DF',
+                        },
+                        paper: {
+                            base: '#F9F8F4',
+                            warm: '#F1EDE4',
+                            ink:  '#161A18',
+                            mute: '#525B56'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                        serif: ['"Fraunces"', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html, body {
+            background-color: #F9F8F4;
+            color: #161A18;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        html.no-scroll,
+        body.no-scroll {
+            overflow: hidden !important;
+            overscroll-behavior: none;
+        }
+
+        /* Pastikan gambar logo PNG transparan bersih tanpa latar belakang kotak */
+        .logo-transparent {
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        /* Overlay blur ringan untuk modal */
+        .modal-backdrop-blur {
+            background-color: rgba(7, 41, 28, 0.55);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+        }
+
+        /* Native Hardware-Accelerated Carousel (Sangat ringan saat digeser di HP) */
+        .native-carousel {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .native-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .native-slide {
+            flex: 0 0 82%;
+            scroll-snap-align: start;
+        }
+        @media (min-width: 640px) {
+            .native-slide {
+                flex: 0 0 calc(50% - 0.5rem);
+            }
+        }
+        @media (min-width: 1024px) {
+            .native-slide {
+                flex: 0 0 calc(33.333% - 0.67rem);
+            }
+        }
+
+        /* Animasi kilau halus (sheen) yang ringan pada tombol mengambang bawah tengah */
+        .floating-exam-btn {
+            position: relative;
+            overflow: hidden;
+            background-color: #0B3E2B;
+            border: 1px solid rgba(212, 168, 83, 0.55);
+            box-shadow: 0 10px 25px -5px rgba(7, 41, 28, 0.28), 0 4px 10px -4px rgba(7, 41, 28, 0.18);
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .floating-exam-btn:hover {
+            background-color: #07291C;
+            border-color: #D4A853;
+            transform: translateY(-1px);
+        }
+        .floating-exam-btn:active {
+            transform: scale(0.98);
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            .floating-exam-btn::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 65%;
+                height: 100%;
+                background: linear-gradient(
+                    105deg,
+                    transparent 20%,
+                    rgba(212, 168, 83, 0.24) 50%,
+                    transparent 80%
+                );
+                animation: editorialSheen 4.2s ease-in-out infinite;
+                pointer-events: none;
+            }
+            @keyframes editorialSheen {
+                0%, 45% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(340%);
+                }
+            }
+        }
+
+        /* Animasi halus untuk Modal Galeri & Pratinjau Foto Ekstrakurikuler */
+        @keyframes galleryFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        @keyframes galleryTileReveal {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(0.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .gallery-modal-animate {
+            animation: galleryFadeIn 0.28s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .gallery-tile-animate {
+            opacity: 0;
+            animation: galleryTileReveal 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* Animasi halus lembut saat setiap section memasuki layar */
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+        .section-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gallery-modal-animate,
+            .gallery-tile-animate {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .section-reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-[15px] leading-relaxed pb-24 selection:bg-emerald-900 selection:text-white">
+
+    <!-- =====================================================================
+         KONFIGURASI URL & LOGO (MUDAH DIUBAH DI SATU TEMPAT)
+         ===================================================================== -->
+    <script>
+        const SITE_CONFIG = {
+            GOOGLE_FORM_URL: "https://forms.gle/33nRcigoWEJKDhTW7",
+            WHATSAPP_URL: "https://wa.me/6283897889350?text=" + encodeURIComponent("Assalamu'alaikum warahmatullahi wabarakatuh, Admin KMA Baitul Qur'an Slogohimo. Saya ingin bertanya mengenai informasi pendaftaran calon santri baru."),
+            MAPS_URL: "https://maps.app.goo.gl/KjD1YqcAcmpPpCUo9",
+            // Endpoint lh3.googleusercontent.com mempertahankan kanal alpha PNG transparan tanpa kotak hitam
+            LOGO_PRIMARY_URL: "https://lh3.googleusercontent.com/d/1LALXms6q_cctYtN_nolPCAmz6bXrRikP",
+            LOGO_FALLBACK_URL: "https://drive.google.com/uc?export=view&id=1LALXms6q_cctYtN_nolPCAmz6bXrRikP"
+        };
+
+        function handleLogoError(img) {
+            if (!img.dataset.fallbackTried) {
+                img.dataset.fallbackTried = "true";
+                img.src = SITE_CONFIG.LOGO_FALLBACK_URL;
+            } else {
+                img.style.display = "none";
+                const textFallback = img.nextElementSibling;
+                if (textFallback) textFallback.classList.remove("hidden");
+            }
+        }
+    </script>
+
+    <main>
+        <!-- =====================================================================
+             HERO SECTION (EDITORIAL MASTHEAD: LOGO TRANSPARAN & IDENTITAS LEMBAGA)
+             ===================================================================== -->
+        <section id="beranda" class="section-reveal is-visible border-b border-emerald-950/15 bg-paper-base">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+                <div class="flex flex-col sm:flex-row items-center sm:items-center gap-5 sm:gap-8 text-center sm:text-left">
+                    <!-- Logo Resmi Transparan -->
+                    <div class="shrink-0 bg-transparent">
+                        <img src="https://lh3.googleusercontent.com/d/1LALXms6q_cctYtN_nolPCAmz6bXrRikP"
+                             alt="Logo Resmi KMA Baitul Qur'an Slogohimo"
+                             decoding="sync"
+                             fetchpriority="high"
+                             onerror="handleLogoError(this)"
+                             class="logo-transparent h-24 sm:h-28 md:h-32 w-auto object-contain mx-auto">
+                        <span class="hidden font-serif font-semibold text-emerald-950 text-xl tracking-tight">
+                            KMA BAITUL QUR'AN SLOGOHIMO
+                        </span>
+                    </div>
+
+                    <!-- Garis Pemisah Vertikal Tipis pada Layar Lebar -->
+                    <div class="hidden sm:block w-px h-24 bg-emerald-950/15 shrink-0" aria-hidden="true"></div>
+
+                    <!-- Identitas Teks Lembaga -->
+                    <div class="min-w-0">
+                        <div class="inline-flex items-center gap-2.5 mb-2">
+                            <span class="w-5 h-px bg-gold-600 hidden sm:inline-block" aria-hidden="true"></span>
+                            <span class="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.18em] text-gold-600">
+                                Lembaga Pendidikan Islam
+                            </span>
+                        </div>
+
+                        <h1 class="font-serif text-2xl sm:text-4xl md:text-[42px] font-medium text-emerald-950 leading-[1.15] tracking-tight">
+                            KMA BAITUL QUR'AN SLOGOHIMO
+                        </h1>
+
+                        <p class="text-xs sm:text-sm text-paper-mute mt-2 tracking-wide">
+                            Slogohimo, Wonogiri, Jawa Tengah
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             VISI LEMBAGA & KEUNGGULAN PENDIDIKAN (EDITORIAL PROSPECTUS LAYOUT)
+             ===================================================================== -->
+        <section id="profil" class="section-reveal border-b border-emerald-950/15 bg-paper-base">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-11 space-y-9">
+                
+                <!-- VISI RESMI (Tata Letak Tipografi Editorial dengan Aksen Emas Halus) -->
+                <div class="relative bg-paper-warm/70 border-y border-emerald-950/15 px-5 sm:px-10 py-7 sm:py-9">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-gold-600">
+                                Visi Lembaga
+                            </span>
+                            <span class="h-px w-10 bg-gold-500/60" aria-hidden="true"></span>
+                        </div>
+                        <blockquote class="font-serif text-xl sm:text-2xl md:text-[27px] font-normal text-emerald-950 leading-[1.42]">
+                            “Terwujudnya Generasi Qur'ani yang Berwawasan Masa Depan Beraqidah Salimah Berahlaqul Karimah Berilmu Amaliyah dan Beramal Ilmiyah”
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- LIMA KEUNGGULAN PENDIDIKAN (Padat untuk meminimalisir scrolling) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start">
+                    <div class="lg:col-span-4">
+                        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-emerald-950 leading-snug">
+                            Keunggulan Pendidikan
+                        </h2>
+                    </div>
+
+                    <div class="lg:col-span-8">
+                        <ol class="divide-y divide-emerald-950/12 border-t border-b border-emerald-950/12">
+                            <li class="py-2 sm:py-2.5 flex items-baseline gap-3.5">
+                                <span class="font-serif text-xs sm:text-sm font-semibold text-gold-600 shrink-0">01</span>
+                                <p class="text-sm sm:text-[15px] text-paper-ink leading-snug">Mendidik santriwan/santriwati mampu menghafal Al-Qur'an 30 Juz.</p>
+                            </li>
+                            <li class="py-2 sm:py-2.5 flex items-baseline gap-3.5">
+                                <span class="font-serif text-xs sm:text-sm font-semibold text-gold-600 shrink-0">02</span>
+                                <p class="text-sm sm:text-[15px] text-paper-ink leading-snug">Mendapatkan materi dasar keislaman.</p>
+                            </li>
+                            <li class="py-2 sm:py-2.5 flex items-baseline gap-3.5">
+                                <span class="font-serif text-xs sm:text-sm font-semibold text-gold-600 shrink-0">03</span>
+                                <p class="text-sm sm:text-[15px] text-paper-ink leading-snug">Mendapatkan bimbingan dasar Bahasa Arab aktif dan pasif.</p>
+                            </li>
+                            <li class="py-2 sm:py-2.5 flex items-baseline gap-3.5">
+                                <span class="font-serif text-xs sm:text-sm font-semibold text-gold-600 shrink-0">04</span>
+                                <p class="text-sm sm:text-[15px] text-paper-ink leading-snug">Lokasi pesantren yang kondusif, nyaman dan strategis.</p>
+                            </li>
+                            <li class="py-2 sm:py-2.5 flex items-baseline gap-3.5">
+                                <span class="font-serif text-xs sm:text-sm font-semibold text-gold-600 shrink-0">05</span>
+                                <p class="text-sm sm:text-[15px] text-paper-ink leading-snug">Mengupayakan beasiswa bagi santri berprestasi yang siap menjadi kader umat.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             PROGRAM PENDIDIKAN & MATERI PELAJARAN
+             ===================================================================== -->
+        <section id="program" class="section-reveal py-8 sm:py-11 border-b border-emerald-950/15 bg-paper-warm/50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-9">
+                
+                <!-- TIGA PROGRAM PENDIDIKAN -->
+                <div>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-medium text-emerald-950 mb-4">
+                        Program Pendidikan
+                    </h2>
+
+                    <div class="space-y-4">
+                        <!-- Dua Program Utama (Putra & Putri) Berdampingan -->
+                        <div class="bg-paper-base border border-emerald-950/15 rounded grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-emerald-950/15">
+                            <!-- 1. KMI Putra -->
+                            <article class="p-5 sm:p-6">
+                                <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded mb-2.5">
+                                    Putra
+                                </span>
+                                <h3 class="font-serif text-xl sm:text-2xl font-medium text-emerald-950 leading-snug">
+                                    Kulliyatul Mu'allimin Al Islamiyah (Putra)
+                                </h3>
+                            </article>
+
+                            <!-- 2. KMI Putri -->
+                            <article class="p-5 sm:p-6">
+                                <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded mb-2.5">
+                                    Putri
+                                </span>
+                                <h3 class="font-serif text-xl sm:text-2xl font-medium text-emerald-950 leading-snug">
+                                    Kulliyatul Mu'allimat Al Islamiyah (Putri)
+                                </h3>
+                            </article>
+                        </div>
+
+                        <!-- 3. Program Kesetaraan Paket C (Komposisi Horizontal Bersih & Selaras) -->
+                        <article class="bg-paper-base border border-emerald-950/15 border-l-4 border-l-gold-500 rounded p-5 sm:px-7 sm:py-6 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-center">
+                            <div class="md:col-span-5">
+                                <h3 class="font-serif text-xl sm:text-2xl font-medium text-emerald-950 leading-snug">
+                                    Program Kesetaraan Paket C
+                                </h3>
+                            </div>
+                            <div class="md:col-span-7 md:border-l md:border-emerald-950/12 md:pl-8">
+                                <p class="text-xs sm:text-sm text-paper-mute leading-relaxed">
+                                    Program pendidikan kesetaraan setingkat SMA/MA bagi santri guna memperoleh ijazah pendidikan formal yang diakui secara nasional, berjalan selaras dengan kurikulum kepesantrenan.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- MATERI PELAJARAN (Grid 4 Kolom Desktop, 2 Kolom Mobile) -->
+                <div>
+                    <div class="mb-3">
+                        <h2 class="font-serif text-xl sm:text-2xl font-medium text-emerald-950">Materi Pelajaran</h2>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 bg-paper-base border-t border-l border-emerald-950/15">
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Aqidah</span>
+                            <span class="font-serif text-xs text-gold-600">01</span>
+                        </div>
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Fikih</span>
+                            <span class="font-serif text-xs text-gold-600">02</span>
+                        </div>
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Adab</span>
+                            <span class="font-serif text-xs text-gold-600">03</span>
+                        </div>
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Tahsin</span>
+                            <span class="font-serif text-xs text-gold-600">04</span>
+                        </div>
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Hadits</span>
+                            <span class="font-serif text-xs text-gold-600">05</span>
+                        </div>
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Siroh</span>
+                            <span class="font-serif text-xs text-gold-600">06</span>
+                        </div>
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Bahasa Arab</span>
+                            <span class="font-serif text-xs text-gold-600">07</span>
+                        </div>
+                        <div class="p-3.5 sm:p-4 border-r border-b border-emerald-950/15 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-emerald-950">Matan</span>
+                            <span class="font-serif text-xs text-gold-600">08</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             EKSTRAKURIKULER (NATIVE HARDWARE SWIPE CAROUSEL, RINGAN & TANPA AUTOPLAY)
+             ===================================================================== -->
+        <section id="kegiatan" class="section-reveal py-8 sm:py-11 border-b border-emerald-950/15">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-medium text-emerald-950">
+                        Kegiatan Ekstrakurikuler
+                    </h2>
+
+                    <!-- Tombol Lihat Semua & Navigasi Carousel -->
+                    <div class="flex items-center gap-2 shrink-0">
+                        <button type="button" onclick="openGalleryModal()" class="px-3 py-1.5 rounded border border-emerald-950/20 hover:border-emerald-900 hover:bg-emerald-900 hover:text-white text-emerald-950 text-xs font-semibold transition-colors">
+                            Lihat Semua
+                        </button>
+                        <button type="button" id="carouselPrevBtn" aria-label="Kegiatan sebelumnya" class="w-8 h-8 sm:w-9 sm:h-9 rounded border border-emerald-950/20 hover:bg-emerald-900 hover:text-white text-emerald-950 flex items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <button type="button" id="carouselNextBtn" aria-label="Kegiatan berikutnya" class="w-8 h-8 sm:w-9 sm:h-9 rounded border border-emerald-950/20 hover:bg-emerald-900 hover:text-white text-emerald-950 flex items-center justify-center transition-colors disabled:opacity-30 disabled:pointer-events-none">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Track Carousel Native Scroll-Snap (Ringan saat digeser dengan jari di HP) -->
+                <div id="carouselTrack" class="native-carousel">
+                    <!-- 1. Berkebun -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/1-S859ye_XPCcjOZKzbvcjChDx0HyskYl"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=1-S859ye_XPCcjOZKzbvcjChDx0HyskYl';}"
+                                 alt="Ekstrakurikuler Berkebun"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between">
+                            <span class="text-sm font-bold text-emerald-950">Berkebun</span>
+                            <span class="font-serif text-xs text-paper-mute">01 / 08</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 2. Karate -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/15N_X8N3dOYurBbkMHUgzf5dxGbakWI8G"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=15N_X8N3dOYurBbkMHUgzf5dxGbakWI8G';}"
+                                 alt="Ekstrakurikuler Karate"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between">
+                            <span class="text-sm font-bold text-emerald-950">Karate</span>
+                            <span class="font-serif text-xs text-paper-mute">02 / 08</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 3. Memanah -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/1tvFuxzyY9KyZhKOfi7AMlrjxXmKL7y1F"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=1tvFuxzyY9KyZhKOfi7AMlrjxXmKL7y1F';}"
+                                 alt="Ekstrakurikuler Memanah"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between">
+                            <span class="text-sm font-bold text-emerald-950">Memanah</span>
+                            <span class="font-serif text-xs text-paper-mute">03 / 08</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 4. Menjahit -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/1aqVNrTc83i_Tt6WOc5wxRnHSxja3ET_c"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=1aqVNrTc83i_Tt6WOc5wxRnHSxja3ET_c';}"
+                                 alt="Ekstrakurikuler Menjahit"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between">
+                            <span class="text-sm font-bold text-emerald-950">Menjahit</span>
+                            <span class="font-serif text-xs text-paper-mute">04 / 08</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 5. Tata boga -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/1qJIUabw9X_AWTMPp_9cWTMTVL_QINDvV"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=1qJIUabw9X_AWTMPp_9cWTMTVL_QINDvV';}"
+                                 alt="Ekstrakurikuler Tata boga"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between">
+                            <span class="text-sm font-bold text-emerald-950">Tata boga</span>
+                            <span class="font-serif text-xs text-paper-mute">05 / 08</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 6. KBM (Kegiatan Belajar Mengajar) -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/1imn_q00MrVmuQ_i0d1XsaFwXL0SKe7Sr"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=1imn_q00MrVmuQ_i0d1XsaFwXL0SKe7Sr';}"
+                                 alt="KBM (Kegiatan Belajar Mengajar)"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between gap-2">
+                            <span class="text-sm font-bold text-emerald-950 truncate">KBM (Kegiatan Belajar Mengajar)</span>
+                            <span class="font-serif text-xs text-paper-mute shrink-0">06 / 08</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 7. Manasik Haji -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/1uQkW-BQ3xjGQAOgq5mM_wsmauuF2YHXj"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=1uQkW-BQ3xjGQAOgq5mM_wsmauuF2YHXj';}"
+                                 alt="Kegiatan Manasik Haji"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between">
+                            <span class="text-sm font-bold text-emerald-950">Manasik Haji</span>
+                            <span class="font-serif text-xs text-paper-mute">07 / 08</span>
+                        </figcaption>
+                    </figure>
+
+                    <!-- 8. Tasmi' Kelipatan Sekali Majelis -->
+                    <figure class="native-slide">
+                        <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/10">
+                            <img src="https://lh3.googleusercontent.com/d/1qZX1ba4Z7xQkpHKWIwq-c_n2BFKbepBY"
+                                 onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='https://drive.google.com/uc?export=view&id=1qZX1ba4Z7xQkpHKWIwq-c_n2BFKbepBY';}"
+                                 alt="Tasmi' Kelipatan Sekali Majelis"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="pt-2.5 flex items-baseline justify-between gap-2">
+                            <span class="text-sm font-bold text-emerald-950 truncate">Tasmi' Kelipatan Sekali Majelis</span>
+                            <span class="font-serif text-xs text-paper-mute shrink-0">08 / 08</span>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <!-- Indikator Posisi Carousel -->
+                <div id="carouselDots" class="flex items-center gap-1.5 mt-4" aria-label="Indikator posisi kegiatan"></div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             INFORMASI & TATA CARA UJIAN SELEKSI CALON SANTRI
+             ===================================================================== -->
+        <section id="ujian-seleksi" class="section-reveal py-8 sm:py-11 border-b border-emerald-950/15 bg-paper-base">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <!-- Tajuk Section -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pb-5 border-b border-emerald-950/15">
+                    <div>
+                        <h2 class="font-serif text-2xl sm:text-3xl font-medium text-emerald-950">
+                            Alur, Peraturan & Tata Cara Ujian
+                        </h2>
+                    </div>
+                    <p class="text-xs sm:text-sm text-paper-mute max-w-md">
+                        Harap membaca seluruh ketentuan di bawah ini sebelum menuju lembar ujian seleksi online.
+                    </p>
+                </div>
+
+                <!-- Tiga Kolom Editorial: Alur, Peraturan, Tata Cara -->
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-emerald-950/15 border-b border-emerald-950/15">
+                    <!-- 1. Alur Pelaksanaan Ujian -->
+                    <div class="py-5 md:py-6 md:pr-6">
+                        <div class="flex items-baseline gap-2.5 mb-2.5">
+                            <span class="font-serif text-sm font-semibold text-gold-600">01</span>
+                            <h3 class="font-serif text-lg font-medium text-emerald-950">Alur Pelaksanaan Ujian</h3>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-paper-mute leading-relaxed list-disc pl-4">
+                            <li>Tahap 1: Mengisi identitas lengkap calon santri pada lembar formulir ujian.</li>
+                            <li>Tahap 2: Mengerjakan seluruh soal seleksi sesuai waktu dan jadwal panitia.</li>
+                            <li>Tahap 3: Mengirimkan jawaban dan menunggu pengumuman resmi dari panitia.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 2. Peraturan Ujian -->
+                    <div class="py-5 md:py-6 md:px-6">
+                        <div class="flex items-baseline gap-2.5 mb-2.5">
+                            <span class="font-serif text-sm font-semibold text-gold-600">02</span>
+                            <h3 class="font-serif text-lg font-medium text-emerald-950">Peraturan Ujian</h3>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-paper-mute leading-relaxed list-disc pl-4">
+                            <li>Peserta wajib mengerjakan soal secara jujur, mandiri, dan tanpa bantuan pihak lain.</li>
+                            <li>Ketentuan batas waktu pengerjaan dan kesempatan pengisian formulir mengikuti arahan panitia.</li>
+                            <li>Pelanggaran terhadap tata tertib selama ujian berlangsung akan dikenakan sanksi sesuai ketentuan pesantren.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Tata Cara Mengerjakan Ujian -->
+                    <div class="py-5 md:py-6 md:pl-6">
+                        <div class="flex items-baseline gap-2.5 mb-2.5">
+                            <span class="font-serif text-sm font-semibold text-gold-600">03</span>
+                            <h3 class="font-serif text-lg font-medium text-emerald-950">Tata Cara Mengerjakan Ujian</h3>
+                        </div>
+                        <ul class="space-y-2 text-xs sm:text-sm text-paper-mute leading-relaxed list-disc pl-4">
+                            <li>Pastikan perangkat memiliki koneksi internet yang stabil sebelum memulai.</li>
+                            <li>Periksa kembali kebenaran penulisan nama lengkap dan nomor kontak aktif.</li>
+                            <li>Pastikan semua pertanyaan telah terjawab sebelum menekan tombol Kirim.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bar Persetujuan & Tombol Akses Google Form -->
+                <div class="pt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-paper-warm/70 border border-emerald-950/15 rounded p-4 sm:px-6 mt-5">
+                    <label for="sectionAgreeCheckbox" class="flex items-start sm:items-center gap-3 cursor-pointer select-none">
+                        <input type="checkbox" id="sectionAgreeCheckbox" class="mt-0.5 sm:mt-0 w-4 h-4 accent-emerald-900 cursor-pointer shrink-0">
+                        <span class="text-xs sm:text-sm font-medium text-emerald-950">
+                            Saya telah membaca dan memahami petunjuk serta peraturan ujian.
+                        </span>
+                    </label>
+
+                    <button type="button"
+                            id="sectionStartExamBtn"
+                            disabled
+                            onclick="proceedFromSectionToGoogleForm()"
+                            class="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-emerald-900 hover:bg-emerald-950 disabled:bg-emerald-950/20 disabled:text-paper-mute disabled:cursor-not-allowed text-white text-xs sm:text-sm font-semibold rounded transition-colors shrink-0">
+                        <span>Mulai Ujian Seleksi</span>
+                        <span aria-hidden="true">&rarr;</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             KONTAK, LOKASI & FOOTER TERPADU (EDITORIAL DIRECTORY COLOPHON)
+             ===================================================================== -->
+        <footer id="kontak" class="section-reveal bg-paper-warm/75">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-11 pb-8">
+                
+                <!-- Header Direktori Kontak -->
+                <div class="mb-5">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-medium text-emerald-950">
+                        Kontak & Informasi Pendaftaran
+                    </h2>
+                </div>
+
+                <!-- Direktori Kontak Tanpa Kotak Kaku (Garis Editorial Bersih) -->
+                <div class="border-t border-b border-emerald-950/15 divide-y divide-emerald-950/12 mb-8">
+                    <!-- Baris 1: WhatsApp -->
+                    <div class="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-6 flex-1">
+                            <div class="sm:col-span-4">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-paper-mute">
+                                    WhatsApp Admin
+                                </span>
+                            </div>
+                            <div class="sm:col-span-8">
+                                <p class="font-serif text-lg sm:text-xl font-medium text-emerald-950">
+                                    +62 838-9788-9350
+                                </p>
+                                <p class="text-xs sm:text-sm text-paper-mute mt-0.5">
+                                    Layanan informasi dan konsultasi pendaftaran bagi orang tua serta calon santriwan/santriwati.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="shrink-0">
+                            <a id="waContactBtn" href="https://wa.me/6283897889350?text=Assalamu'alaikum%20warahmatullahi%20wabarakatuh%2C%20Admin%20KMA%20Baitul%20Qur'an%20Slogohimo.%20Saya%20ingin%20bertanya%20mengenai%20informasi%20pendaftaran%20calon%20santri%20baru." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-900 hover:bg-emerald-950 text-white text-xs font-semibold rounded transition-colors">
+                                <span>Hubungi Kami</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Baris 2: Lokasi Google Maps -->
+                    <div class="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-6 flex-1">
+                            <div class="sm:col-span-4">
+                                <span class="text-xs font-semibold uppercase tracking-wider text-paper-mute">
+                                    Alamat Pesantren
+                                </span>
+                            </div>
+                            <div class="sm:col-span-8">
+                                <p class="font-serif text-lg sm:text-xl font-medium text-emerald-950">
+                                    KMA Baitul Qur'an Slogohimo
+                                </p>
+                                <p class="text-xs sm:text-sm text-paper-mute mt-0.5">
+                                    Kecamatan Slogohimo, Kabupaten Wonogiri, Jawa Tengah.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="shrink-0">
+                            <a href="https://maps.app.goo.gl/KjD1YqcAcmpPpCUo9" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-emerald-900 text-emerald-900 hover:bg-emerald-900 hover:text-white text-xs font-semibold rounded transition-colors">
+                                <span>Lihat Lokasi</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Baris Bawah: Identitas Footer & Hak Cipta -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                    <div class="flex items-center gap-3">
+                        <img src="https://lh3.googleusercontent.com/d/1LALXms6q_cctYtN_nolPCAmz6bXrRikP"
+                             alt="Logo KMA Baitul Qur'an Slogohimo"
+                             loading="lazy"
+                             onerror="handleLogoError(this)"
+                             class="logo-transparent h-9 w-auto object-contain shrink-0">
+                        <span class="hidden font-serif font-bold text-emerald-950 text-xs">KMA BQ</span>
+                        <div>
+                            <p class="font-bold text-xs sm:text-sm text-emerald-950">KMA Baitul Qur'an Slogohimo</p>
+                            <p class="text-[11px] text-paper-mute">Lembaga Pendidikan Islam, Wonogiri</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-paper-mute">
+                        <a href="#beranda" class="hover:text-emerald-900 transition-colors">Beranda</a>
+                        <a href="#profil" class="hover:text-emerald-900 transition-colors">Visi & Keunggulan</a>
+                        <a href="#program" class="hover:text-emerald-900 transition-colors">Program</a>
+                        <a href="#kegiatan" class="hover:text-emerald-900 transition-colors">Ekstrakurikuler</a>
+                        <a href="#ujian-seleksi" class="hover:text-emerald-900 transition-colors">Ujian Seleksi</a>
+                    </div>
+
+                    <p class="text-[11px] text-paper-mute">
+                        &copy; <span id="yearNow"></span> KMA Baitul Qur'an Slogohimo.
+                    </p>
+                </div>
+
+            </div>
+        </footer>
+    </main>
+
+    <!-- =====================================================================
+         TOMBOL MENGAMBANG BAWAH TENGAH ELEGAN (IKON ✍🏻 & AKSEN MENARIK)
+         ===================================================================== -->
+    <div class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40">
+        <button type="button"
+                onclick="openExamModal()"
+                class="floating-exam-btn inline-flex items-center gap-2.5 px-6 py-3.5 text-white text-xs sm:text-sm font-semibold tracking-wide rounded-full cursor-pointer whitespace-nowrap ring-2 ring-gold-400/35">
+            <span class="text-base leading-none" aria-hidden="true">&#9997;&#127995;</span>
+            <span>Ujian Seleksi Calon Santri</span>
+            <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-gold-500/20 text-gold-400 text-xs leading-none" aria-hidden="true">&rarr;</span>
+        </button>
+    </div>
+
+    <!-- =====================================================================
+         MODAL GALERI SEMUA EKSTRAKURIKULER (1 BARIS 3 FOTO + ANIMASI HALUS)
+         ===================================================================== -->
+    <div id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="galleryModalTitle" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5">
+        <div class="fixed inset-0 modal-backdrop-blur" onclick="closeGalleryModal()"></div>
+
+        <div class="gallery-modal-animate relative z-10 bg-paper-base border border-emerald-950/15 w-full max-w-3xl max-h-[86vh] flex flex-col rounded shadow-2xl overflow-hidden">
+            <div class="px-4 sm:px-6 py-3.5 bg-paper-base border-b border-emerald-950/12 flex items-center justify-between">
+                <div>
+                    <h3 id="galleryModalTitle" class="font-serif text-lg sm:text-xl font-medium text-emerald-950">Galeri Kegiatan Ekstrakurikuler</h3>
+                    <p class="text-[11px] sm:text-xs text-paper-mute">Ketuk foto untuk memperbesar tampilan</p>
+                </div>
+                <button type="button" onclick="closeGalleryModal()" aria-label="Tutup galeri" class="p-1.5 text-paper-mute hover:text-emerald-950 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="p-3.5 sm:p-5 overflow-y-auto">
+                <div id="galleryGrid" class="grid grid-cols-3 gap-2.5 sm:gap-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         LIGHTBOX / POPUP PRATINJAU FOTO EKSTRAKURIKULER UKURAN BESAR
+         ===================================================================== -->
+    <div id="photoLightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption" class="fixed inset-0 z-[60] hidden items-center justify-center p-3 sm:p-6">
+        <div class="fixed inset-0 modal-backdrop-blur" onclick="closePhotoLightbox()"></div>
+
+        <div class="gallery-modal-animate relative z-10 w-full max-w-4xl flex flex-col items-center">
+            <div class="w-full flex items-center justify-between gap-3 mb-2.5 px-1">
+                <p id="lightboxCaption" class="font-serif text-base sm:text-xl font-medium text-white drop-shadow"></p>
+                <button type="button" onclick="closePhotoLightbox()" aria-label="Tutup foto" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-emerald-950/85 hover:bg-emerald-900 border border-white/20 text-white text-xs font-semibold transition-colors">
+                    <span>Tutup</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <div class="w-full bg-emerald-950/40 border border-white/15 rounded overflow-hidden shadow-2xl">
+                <img id="lightboxImg"
+                     src=""
+                     alt=""
+                     class="w-full max-h-[78vh] object-contain mx-auto block">
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL PETUNJUK & PERATURAN UJIAN SELEKSI
+         ===================================================================== -->
+    <div id="examModal" role="dialog" aria-modal="true" aria-labelledby="examModalTitle" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+        <!-- Overlay Gelap + Blur -->
+        <div class="fixed inset-0 modal-backdrop-blur" onclick="closeExamModal()"></div>
+
+        <!-- Konten Modal -->
+        <div class="relative z-10 bg-white w-full max-w-2xl max-h-[88vh] flex flex-col rounded shadow-2xl overflow-hidden">
+            <!-- Header Modal -->
+            <div class="px-5 py-4 bg-paper-base border-b border-emerald-950/12 flex items-center justify-between">
+                <div>
+                    <span class="text-[11px] font-semibold uppercase tracking-wider text-gold-600 block">Seleksi Calon Santri</span>
+                    <h3 id="examModalTitle" class="font-serif text-lg sm:text-xl font-medium text-emerald-950">Petunjuk & Peraturan Ujian</h3>
+                </div>
+                <button type="button" onclick="closeExamModal()" aria-label="Tutup modal" class="p-1.5 text-paper-mute hover:text-emerald-950 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+
+            <!-- Isi Modal: 3 Bagian Ketentuan Ujian -->
+            <div class="p-5 overflow-y-auto space-y-5 text-xs sm:text-sm text-paper-ink">
+                <section class="pb-4 border-b border-emerald-950/10">
+                    <h4 class="font-bold text-emerald-950 mb-1.5">1. Alur Pelaksanaan Ujian</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-paper-mute">
+                        <li>Tahap 1: Mengisi identitas lengkap calon santri pada lembar formulir ujian.</li>
+                        <li>Tahap 2: Mengerjakan seluruh soal seleksi sesuai waktu dan jadwal panitia.</li>
+                        <li>Tahap 3: Mengirimkan jawaban dan menunggu pengumuman resmi dari panitia.</li>
+                    </ul>
+                </section>
+
+                <section class="pb-4 border-b border-emerald-950/10">
+                    <h4 class="font-bold text-emerald-950 mb-1.5">2. Peraturan Ujian</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-paper-mute">
+                        <li>Peserta wajib mengerjakan soal secara jujur, mandiri, dan tanpa bantuan pihak lain.</li>
+                        <li>Ketentuan batas waktu pengerjaan dan kesempatan pengisian formulir mengikuti arahan panitia.</li>
+                        <li>Pelanggaran terhadap tata tertib selama ujian berlangsung akan dikenakan sanksi sesuai ketentuan pesantren.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4 class="font-bold text-emerald-950 mb-1.5">3. Tata Cara Mengerjakan Ujian</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-paper-mute">
+                        <li>Pastikan perangkat memiliki koneksi internet yang stabil sebelum memulai.</li>
+                        <li>Periksa kembali kebenaran penulisan nama lengkap dan nomor kontak aktif.</li>
+                        <li>Pastikan semua pertanyaan telah terjawab sebelum menekan tombol Kirim.</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Footer Modal: Checkbox Persetujuan & Tombol Lanjut -->
+            <div class="px-5 py-4 bg-paper-base border-t border-emerald-950/12 space-y-3.5">
+                <label for="agreeCheckbox" class="flex items-start gap-2.5 cursor-pointer select-none">
+                    <input type="checkbox" id="agreeCheckbox" class="mt-0.5 w-4 h-4 accent-emerald-900 cursor-pointer">
+                    <span class="text-xs sm:text-sm font-medium text-emerald-950">
+                        Saya telah membaca dan memahami petunjuk serta peraturan ujian.
+                    </span>
+                </label>
+
+                <div class="flex items-center justify-end gap-2.5">
+                    <button type="button" onclick="closeExamModal()" class="px-4 py-2 border border-emerald-950/20 bg-white hover:bg-paper-warm text-paper-ink text-xs font-semibold rounded transition-colors">
+                        Batal
+                    </button>
+                    <button type="button" id="confirmStartExamBtn" disabled onclick="proceedToGoogleForm()" class="px-4 py-2 bg-emerald-900 hover:bg-emerald-950 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed text-white text-xs font-semibold rounded transition-colors">
+                        Saya Mengerti, Mulai Ujian
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT RINGAN & CEPAT
+         ===================================================================== -->
+    <script>
+        const htmlNode = document.documentElement;
+        const bodyNode = document.body;
+
+        // 1. Modal Ujian Seleksi
+        const examModal = document.getElementById("examModal");
+        const agreeCheckbox = document.getElementById("agreeCheckbox");
+        const confirmStartExamBtn = document.getElementById("confirmStartExamBtn");
+
+        function openExamModal() {
+            examModal.classList.remove("hidden");
+            examModal.classList.add("flex");
+            htmlNode.classList.add("no-scroll");
+            bodyNode.classList.add("no-scroll");
+        }
+
+        function closeExamModal() {
+            examModal.classList.add("hidden");
+            examModal.classList.remove("flex");
+            agreeCheckbox.checked = false;
+            confirmStartExamBtn.disabled = true;
+            htmlNode.classList.remove("no-scroll");
+            bodyNode.classList.remove("no-scroll");
+        }
+
+        agreeCheckbox.addEventListener("change", () => {
+            confirmStartExamBtn.disabled = !agreeCheckbox.checked;
+        });
+
+        function proceedToGoogleForm() {
+            if (!agreeCheckbox.checked) return;
+            window.open(SITE_CONFIG.GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+            closeExamModal();
+        }
+
+        // Kontrol Persetujuan pada Section Alur, Peraturan & Tata Cara Ujian
+        const sectionAgreeCheckbox = document.getElementById("sectionAgreeCheckbox");
+        const sectionStartExamBtn = document.getElementById("sectionStartExamBtn");
+
+        sectionAgreeCheckbox.addEventListener("change", () => {
+            sectionStartExamBtn.disabled = !sectionAgreeCheckbox.checked;
+        });
+
+        function proceedFromSectionToGoogleForm() {
+            if (!sectionAgreeCheckbox.checked) return;
+            window.open(SITE_CONFIG.GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+        }
+
+        // Data & Kontrol Modal Galeri Ekstrakurikuler + Lightbox Pratinjau Besar
+        const EXTRACURRICULAR_ITEMS = [
+            {
+                title: "Berkebun",
+                thumb: "https://lh3.googleusercontent.com/d/1-S859ye_XPCcjOZKzbvcjChDx0HyskYl",
+                full: "https://lh3.googleusercontent.com/d/1-S859ye_XPCcjOZKzbvcjChDx0HyskYl",
+                fallback: "https://drive.google.com/uc?export=view&id=1-S859ye_XPCcjOZKzbvcjChDx0HyskYl"
+            },
+            {
+                title: "Karate",
+                thumb: "https://lh3.googleusercontent.com/d/15N_X8N3dOYurBbkMHUgzf5dxGbakWI8G",
+                full: "https://lh3.googleusercontent.com/d/15N_X8N3dOYurBbkMHUgzf5dxGbakWI8G",
+                fallback: "https://drive.google.com/uc?export=view&id=15N_X8N3dOYurBbkMHUgzf5dxGbakWI8G"
+            },
+            {
+                title: "Memanah",
+                thumb: "https://lh3.googleusercontent.com/d/1tvFuxzyY9KyZhKOfi7AMlrjxXmKL7y1F",
+                full: "https://lh3.googleusercontent.com/d/1tvFuxzyY9KyZhKOfi7AMlrjxXmKL7y1F",
+                fallback: "https://drive.google.com/uc?export=view&id=1tvFuxzyY9KyZhKOfi7AMlrjxXmKL7y1F"
+            },
+            {
+                title: "Menjahit",
+                thumb: "https://lh3.googleusercontent.com/d/1aqVNrTc83i_Tt6WOc5wxRnHSxja3ET_c",
+                full: "https://lh3.googleusercontent.com/d/1aqVNrTc83i_Tt6WOc5wxRnHSxja3ET_c",
+                fallback: "https://drive.google.com/uc?export=view&id=1aqVNrTc83i_Tt6WOc5wxRnHSxja3ET_c"
+            },
+            {
+                title: "Tata boga",
+                thumb: "https://lh3.googleusercontent.com/d/1qJIUabw9X_AWTMPp_9cWTMTVL_QINDvV",
+                full: "https://lh3.googleusercontent.com/d/1qJIUabw9X_AWTMPp_9cWTMTVL_QINDvV",
+                fallback: "https://drive.google.com/uc?export=view&id=1qJIUabw9X_AWTMPp_9cWTMTVL_QINDvV"
+            },
+            {
+                title: "KBM (Kegiatan Belajar Mengajar)",
+                thumb: "https://lh3.googleusercontent.com/d/1imn_q00MrVmuQ_i0d1XsaFwXL0SKe7Sr",
+                full: "https://lh3.googleusercontent.com/d/1imn_q00MrVmuQ_i0d1XsaFwXL0SKe7Sr",
+                fallback: "https://drive.google.com/uc?export=view&id=1imn_q00MrVmuQ_i0d1XsaFwXL0SKe7Sr"
+            },
+            {
+                title: "Manasik Haji",
+                thumb: "https://lh3.googleusercontent.com/d/1uQkW-BQ3xjGQAOgq5mM_wsmauuF2YHXj",
+                full: "https://lh3.googleusercontent.com/d/1uQkW-BQ3xjGQAOgq5mM_wsmauuF2YHXj",
+                fallback: "https://drive.google.com/uc?export=view&id=1uQkW-BQ3xjGQAOgq5mM_wsmauuF2YHXj"
+            },
+            {
+                title: "Tasmi' Kelipatan Sekali Majelis",
+                thumb: "https://lh3.googleusercontent.com/d/1qZX1ba4Z7xQkpHKWIwq-c_n2BFKbepBY",
+                full: "https://lh3.googleusercontent.com/d/1qZX1ba4Z7xQkpHKWIwq-c_n2BFKbepBY",
+                fallback: "https://drive.google.com/uc?export=view&id=1qZX1ba4Z7xQkpHKWIwq-c_n2BFKbepBY"
+            }
+        ];
+
+        const galleryModal = document.getElementById("galleryModal");
+        const galleryGrid = document.getElementById("galleryGrid");
+        const photoLightbox = document.getElementById("photoLightbox");
+        const lightboxImg = document.getElementById("lightboxImg");
+        const lightboxCaption = document.getElementById("lightboxCaption");
+
+        function openGalleryModal() {
+            galleryGrid.innerHTML = "";
+            EXTRACURRICULAR_ITEMS.forEach((item, index) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.style.animationDelay = `${index * 45}ms`;
+                btn.className = "gallery-tile-animate group text-left focus:outline-none";
+                btn.onclick = () => openPhotoLightbox(item);
+
+                const fallbackAttr = item.fallback ? `onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='${item.fallback}';}"` : "";
+
+                btn.innerHTML = `
+                    <div class="aspect-[4/3] bg-paper-warm rounded overflow-hidden border border-emerald-950/15 group-hover:border-gold-500 transition-colors">
+                        <img src="${item.thumb}"
+                             ${fallbackAttr}
+                             alt="Ekstrakurikuler ${item.title}"
+                             loading="lazy"
+                             decoding="async"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <p class="mt-1.5 text-[11px] sm:text-xs font-semibold text-emerald-950 group-hover:text-gold-600 transition-colors truncate">
+                        ${item.title}
+                    </p>
+                `;
+                galleryGrid.appendChild(btn);
+            });
+
+            galleryModal.classList.remove("hidden");
+            galleryModal.classList.add("flex");
+            htmlNode.classList.add("no-scroll");
+            bodyNode.classList.add("no-scroll");
+        }
+
+        function closeGalleryModal() {
+            galleryModal.classList.add("hidden");
+            galleryModal.classList.remove("flex");
+            if (photoLightbox.classList.contains("hidden") && examModal.classList.contains("hidden")) {
+                htmlNode.classList.remove("no-scroll");
+                bodyNode.classList.remove("no-scroll");
+            }
+        }
+
+        function openPhotoLightbox(item) {
+            delete lightboxImg.dataset.fb;
+            lightboxImg.onerror = item.fallback ? function () {
+                if (!this.dataset.fb) {
+                    this.dataset.fb = "1";
+                    this.src = item.fallback;
+                }
+            } : null;
+            lightboxImg.src = item.full;
+            lightboxImg.alt = `Ekstrakurikuler ${item.title}`;
+            lightboxCaption.textContent = item.title;
+
+            photoLightbox.classList.remove("hidden");
+            photoLightbox.classList.add("flex");
+            htmlNode.classList.add("no-scroll");
+            bodyNode.classList.add("no-scroll");
+        }
+
+        function closePhotoLightbox() {
+            photoLightbox.classList.add("hidden");
+            photoLightbox.classList.remove("flex");
+            if (galleryModal.classList.contains("hidden") && examModal.classList.contains("hidden")) {
+                htmlNode.classList.remove("no-scroll");
+                bodyNode.classList.remove("no-scroll");
+            }
+        }
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                if (!photoLightbox.classList.contains("hidden")) {
+                    closePhotoLightbox();
+                } else if (!galleryModal.classList.contains("hidden")) {
+                    closeGalleryModal();
+                } else if (!examModal.classList.contains("hidden")) {
+                    closeExamModal();
+                }
+            }
+        });
+        // 2. Inisialisasi Tahun, Animasi Section & Native Carousel Ekstrakurikuler
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("yearNow").textContent = new Date().getFullYear();
+
+            // Sinkronkan tautan WhatsApp dari konfigurasi utama
+            const waContactBtn = document.getElementById("waContactBtn");
+            if (waContactBtn) {
+                waContactBtn.href = SITE_CONFIG.WHATSAPP_URL;
+            }
+
+            // Animasi halus lembut tiap user melihat masing-masing section
+            const revealSections = document.querySelectorAll(".section-reveal");
+            if ("IntersectionObserver" in window) {
+                const sectionObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.08,
+                    rootMargin: "0px 0px -30px 0px"
+                });
+
+                revealSections.forEach((sec) => sectionObserver.observe(sec));
+            } else {
+                revealSections.forEach((sec) => sec.classList.add("is-visible"));
+            }
+
+            const track = document.getElementById("carouselTrack");
+            const slides = Array.from(document.querySelectorAll(".native-slide"));
+            const prevBtn = document.getElementById("carouselPrevBtn");
+            const nextBtn = document.getElementById("carouselNextBtn");
+            const dotsWrap = document.getElementById("carouselDots");
+
+            let scrollTicking = false;
+
+            function getVisibleCount() {
+                if (window.innerWidth >= 1024) return 3;
+                if (window.innerWidth >= 640) return 2;
+                return 1;
+            }
+
+            function getStepCount() {
+                return Math.max(1, slides.length - getVisibleCount() + 1);
+            }
+
+            function getCurrentIndex() {
+                if (!slides.length) return 0;
+                const slideWidth = slides[0].offsetWidth + 16; // lebar slide + gap 1rem
+                return Math.min(getStepCount() - 1, Math.max(0, Math.round(track.scrollLeft / slideWidth)));
+            }
+
+            function renderDots() {
+                dotsWrap.innerHTML = "";
+                const count = getStepCount();
+                const activeIdx = getCurrentIndex();
+                for (let i = 0; i < count; i++) {
+                    const dot = document.createElement("button");
+                    dot.type = "button";
+                    dot.setAttribute("aria-label", `Posisi kegiatan ${i + 1}`);
+                    dot.className = `h-1.5 rounded-full transition-all ${i === activeIdx ? "w-6 bg-emerald-900" : "w-1.5 bg-emerald-900/20"}`;
+                    dot.addEventListener("click", () => {
+                        const slideWidth = slides[0].offsetWidth + 16;
+                        track.scrollTo({ left: i * slideWidth, behavior: "smooth" });
+                    });
+                    dotsWrap.appendChild(dot);
+                }
+            }
+
+            function syncControls() {
+                const activeIdx = getCurrentIndex();
+                const maxIdx = getStepCount() - 1;
+
+                prevBtn.disabled = track.scrollLeft <= 4;
+                nextBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+
+                Array.from(dotsWrap.children).forEach((dot, idx) => {
+                    dot.className = `h-1.5 rounded-full transition-all ${idx === activeIdx ? "w-6 bg-emerald-900" : "w-1.5 bg-emerald-900/20"}`;
+                });
+            }
+
+            prevBtn.addEventListener("click", () => {
+                const slideWidth = slides[0].offsetWidth + 16;
+                track.scrollBy({ left: -slideWidth, behavior: "smooth" });
+            });
+
+            nextBtn.addEventListener("click", () => {
+                const slideWidth = slides[0].offsetWidth + 16;
+                track.scrollBy({ left: slideWidth, behavior: "smooth" });
+            });
+
+            track.addEventListener("scroll", () => {
+                if (!scrollTicking) {
+                    window.requestAnimationFrame(() => {
+                        syncControls();
+                        scrollTicking = false;
+                    });
+                    scrollTicking = true;
+                }
+            }, { passive: true });
+
+            window.addEventListener("resize", () => {
+                renderDots();
+                syncControls();
+            });
+
+            renderDots();
+            syncControls();
+        });
+    </script>
+</body>
+</html>
