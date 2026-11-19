@@ -196,6 +196,24 @@
             transform: translateY(0);
         }
 
+        /* Styling ringkas dan terpusat untuk Visitor Counter */
+        .visitor-counter-box a {
+            display: inline-block;
+            font-size: 11px;
+            line-height: 1.3;
+            color: #525B56;
+            text-decoration: none;
+            margin-bottom: 4px;
+            transition: color 0.2s ease;
+        }
+        .visitor-counter-box a:hover {
+            color: #0B3E2B;
+        }
+        .visitor-counter-box img,
+        .visitor-counter-box table {
+            margin: 0 auto !important;
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .gallery-modal-animate,
             .gallery-tile-animate {
@@ -676,9 +694,9 @@
         </section>
 
         <!-- =====================================================================
-             KONTAK, LOKASI & FOOTER TERPADU (EDITORIAL DIRECTORY COLOPHON)
+             KONTAK & LOKASI
              ===================================================================== -->
-        <footer id="kontak" class="section-reveal bg-paper-warm/75">
+        <section id="kontak" class="section-reveal bg-paper-warm/75 border-b border-emerald-950/15">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-11 pb-8">
                 
                 <!-- Header Direktori Kontak -->
@@ -689,7 +707,7 @@
                 </div>
 
                 <!-- Direktori Kontak Tanpa Kotak Kaku (Garis Editorial Bersih) -->
-                <div class="border-t border-b border-emerald-950/15 divide-y divide-emerald-950/12 mb-8">
+                <div class="border-t border-b border-emerald-950/15 divide-y divide-emerald-950/12">
                     <!-- Baris 1: WhatsApp -->
                     <div class="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-6 flex-1">
@@ -740,38 +758,60 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Baris Bawah: Identitas Footer & Hak Cipta -->
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-                    <div class="flex items-center gap-3">
-                        <img src="https://lh3.googleusercontent.com/d/1LALXms6q_cctYtN_nolPCAmz6bXrRikP"
-                             alt="Logo KMA Baitul Qur'an Slogohimo"
-                             loading="lazy"
-                             onerror="handleLogoError(this)"
-                             class="logo-transparent h-9 w-auto object-contain shrink-0">
-                        <span class="hidden font-serif font-bold text-emerald-950 text-xs">KMA BQ</span>
-                        <div>
-                            <p class="font-bold text-xs sm:text-sm text-emerald-950">KMA Baitul Qur'an Slogohimo</p>
-                            <p class="text-[11px] text-paper-mute">Lembaga Pendidikan Islam, Wonogiri</p>
-                        </div>
+        <!-- =====================================================================
+             SECTION VISITOR COUNTER (COMPACT, TERPUSAT & ELEGAN)
+             ===================================================================== -->
+        <section aria-label="Statistik Pengunjung" class="section-reveal bg-paper-base border-b border-emerald-950/15">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-center">
+                <div class="visitor-counter-box inline-flex flex-col items-center justify-center text-center px-5 py-2.5 rounded bg-paper-warm/70 border border-emerald-950/12">
+                    <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold-600 mb-1">
+                        Statistik Pengunjung
+                    </span>
+                    <div class="text-center leading-tight">
+                        <a href='https://www.acadoo.de/'>www.acadoo.de</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=09f6518317a5637e088bcfe631c0d1eaf12f06fb'></script>
+                        <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1709104/t/0"></script>
                     </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-                    <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-paper-mute">
-                        <a href="#beranda" class="hover:text-emerald-900 transition-colors">Beranda</a>
-                        <a href="#profil" class="hover:text-emerald-900 transition-colors">Visi & Keunggulan</a>
-                        <a href="#program" class="hover:text-emerald-900 transition-colors">Program</a>
-                        <a href="#kegiatan" class="hover:text-emerald-900 transition-colors">Ekstrakurikuler</a>
-                        <a href="#ujian-seleksi" class="hover:text-emerald-900 transition-colors">Ujian Seleksi</a>
+    <!-- =====================================================================
+         FOOTER TERPADU (EDITORIAL COLOPHON)
+         ===================================================================== -->
+    <footer class="bg-paper-warm/75">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-7">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                <div class="flex items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/d/1LALXms6q_cctYtN_nolPCAmz6bXrRikP"
+                         alt="Logo KMA Baitul Qur'an Slogohimo"
+                         loading="lazy"
+                         onerror="handleLogoError(this)"
+                         class="logo-transparent h-9 w-auto object-contain shrink-0">
+                    <span class="hidden font-serif font-bold text-emerald-950 text-xs">KMA BQ</span>
+                    <div>
+                        <p class="font-bold text-xs sm:text-sm text-emerald-950">KMA Baitul Qur'an Slogohimo</p>
+                        <p class="text-[11px] text-paper-mute">Lembaga Pendidikan Islam, Wonogiri</p>
                     </div>
-
-                    <p class="text-[11px] text-paper-mute">
-                        &copy; <span id="yearNow"></span> KMA Baitul Qur'an Slogohimo.
-                    </p>
                 </div>
 
+                <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-paper-mute">
+                    <a href="#beranda" class="hover:text-emerald-900 transition-colors">Beranda</a>
+                    <a href="#profil" class="hover:text-emerald-900 transition-colors">Visi & Keunggulan</a>
+                    <a href="#program" class="hover:text-emerald-900 transition-colors">Program</a>
+                    <a href="#kegiatan" class="hover:text-emerald-900 transition-colors">Ekstrakurikuler</a>
+                    <a href="#ujian-seleksi" class="hover:text-emerald-900 transition-colors">Ujian Seleksi</a>
+                </div>
+
+                <p class="text-[11px] text-paper-mute">
+                    &copy; <span id="yearNow"></span> KMA Baitul Qur'an Slogohimo.
+                </p>
             </div>
-        </footer>
-    </main>
+        </div>
+    </footer>
 
     <!-- =====================================================================
          TOMBOL MENGAMBANG BAWAH TENGAH ELEGAN (IKON ✍🏻 & AKSEN MENARIK)
@@ -1093,6 +1133,7 @@
                 }
             }
         });
+
         // 2. Inisialisasi Tahun, Animasi Section & Native Carousel Ekstrakurikuler
         document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("yearNow").textContent = new Date().getFullYear();
@@ -1166,7 +1207,6 @@
 
             function syncControls() {
                 const activeIdx = getCurrentIndex();
-                const maxIdx = getStepCount() - 1;
 
                 prevBtn.disabled = track.scrollLeft <= 4;
                 nextBtn.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
